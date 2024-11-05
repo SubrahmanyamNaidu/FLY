@@ -1,0 +1,129 @@
+/* Questions.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .questions-container {
+    background: #ffffff;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    margin: 1rem;
+  }
+  
+  .questions-title {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .questions-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .questions-label {
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .questions-label input,
+  .questions-label select,
+  .questions-label textarea {
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+  }
+  
+  .questions-label input:focus,
+  .questions-label select:focus,
+  .questions-label textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .questions-label textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .questions-submit-button {
+    padding: 0.75rem;
+    color: #ffffff;
+    background: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s;
+  }
+  
+  .questions-submit-button:hover {
+    background: #0056b3;
+  }
+  
+  .questions-lyrics-container {
+    margin-top: 2rem;
+    background: #eaf4fe;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-style: italic;
+  }
+  
+  .questions-lyrics-title {
+    font-size: 1.25rem;
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .questions-lyrics {
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+
+.verse {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.chorus {
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.bridge {
+  color: #555;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
