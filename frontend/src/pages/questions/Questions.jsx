@@ -23,6 +23,8 @@ const Questions = () => {
   });
 
   const [lyrics, setLyrics] = useState('');
+  const [loading,setLoading]=useState(false);
+  const [copySuccess, setCopySuccess] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,12 +32,29 @@ const Questions = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const response = await axios.post('http://127.0.0.1:8000/generate-lyrics/', formData);
       setLyrics(response.data.lyrics);
     } catch (error) {
       console.error('Error generating lyrics:', error);
     }
+    setLoading(false)
+  };
+
+  const handleCopyLyrics = () => {
+    // Create a temporary HTML element to strip HTML tags
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = lyrics;
+    const plainTextLyrics = tempElement.innerText;
+
+    navigator.clipboard.writeText(plainTextLyrics)
+      .then(() => {
+        setCopySuccess('Lyrics copied to clipboard!');
+      })
+      .catch(() => {
+        setCopySuccess('Failed to copy lyrics.');
+      });
   };
 
   return (
@@ -165,17 +184,25 @@ const Questions = () => {
           <textarea name="message" value={formData.message} onChange={handleChange}></textarea>
         </label>
         
-        <button type="submit" className="questions-submit-button">Generate Lyrics</button>
+        {loading?  <button type="submit" className="questions-submit-button qusetions-submit-button-loading " disabled>Loading...</button>:
+          <button type="submit" className="questions-submit-button">Generate Lyrics</button>
+        }
+       
+
       </form>
 
       {lyrics && (
         <div className="questions-lyrics-container">
-          <h2 className="questions-lyrics-title">Generated Lyrics</h2>
+          <h2 className="questions-lyrics-title">Lyrics</h2>
           {/* Render HTML lyrics directly */}
           <div 
             className="questions-lyrics" 
-            dangerouslySetInnerHTML={{ __html: lyrics }} 
+            dangerouslySetInnerHTML={{ __html: lyrics }}
           />
+          <button onClick={handleCopyLyrics} className="copy-button">
+            Copy Lyrics
+            </button>
+          {copySuccess && <p className="copy-success">{copySuccess}</p>}
         </div>
       )}
     </div>

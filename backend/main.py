@@ -63,9 +63,11 @@ Generate a song for a special occasion based on the following information:
 - Message: {message}
 
 Compose the song with appropriate verses, a chorus, and a bridge, if applicable. Aim to make the lyrics heartfelt and fitting for the occasion.
-- Wrap each verse with <p class="verse">...</p>.
-- Wrap each chorus with <p class="chorus">...</p> and indicate that it’s a chorus.
-- Wrap any bridge sections with <p class="bridge">...</p>.
+
+- Wrap each verse with <h3>Verse<h3> <p class="verse">...</p>.
+- Wrap each chorus with <h3>Chorus</h3> <p class="chorus">...</p> and indicate that it's a chorus.
+- Wrap any bridge sections with <h3>Bridge </h3> <p class="bridge">...</p>.
+- produce at least three pairs of the above pattren.
 """
 
 # Create the prompt and chain
