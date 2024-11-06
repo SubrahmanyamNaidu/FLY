@@ -5,6 +5,10 @@ from pydantic import BaseModel
 from langchain import LLMChain, OpenAI
 from langchain.prompts import PromptTemplate
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 app = FastAPI()
 
 # Add CORS Middleware for frontend communication
@@ -35,7 +39,7 @@ class SongRequest(BaseModel):
     message: str
 
 # Initialize OpenAI API with LangChain
-openai_api_key = "your api key"
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Define a template to guide the song generation
 template = """
