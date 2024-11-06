@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect,useRef } from 'react';
 import axios from 'axios';
 import './Questions.css';
 
@@ -25,6 +25,7 @@ const Questions = () => {
   const [lyrics, setLyrics] = useState('');
   const [loading,setLoading]=useState(false);
   const [copySuccess, setCopySuccess] = useState('');
+  const lyricsEndRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,6 +57,12 @@ const Questions = () => {
         setCopySuccess('Failed to copy lyrics.');
       });
   };
+
+  useEffect(() => {
+    if (lyrics && lyricsEndRef.current) {
+      lyricsEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [lyrics]);
 
   return (
     <div className="questions-container">
@@ -197,6 +204,7 @@ const Questions = () => {
           {/* Render HTML lyrics directly */}
           <div 
             className="questions-lyrics" 
+            ref={lyricsEndRef}
             dangerouslySetInnerHTML={{ __html: lyrics }}
           />
           <button onClick={handleCopyLyrics} className="copy-button">

@@ -80,5 +80,5 @@ async def generate_lyrics(request: SongRequest):
     # Generate song lyrics using LangChain
     song_data = request.dict()
     song_lyrics = song_chain.run(song_data)
-    print(song_lyrics)
+
     return {"lyrics": song_lyrics}
